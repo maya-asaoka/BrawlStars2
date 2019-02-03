@@ -5,6 +5,8 @@ using UnityEngine;
 public class MovementController : MonoBehaviour
 {
 
+    public GameObject playerBulletPrefab;
+
     public float speed = 0.5f;
 
     private Rigidbody rb;
@@ -54,6 +56,11 @@ public class MovementController : MonoBehaviour
             rb.MovePosition(rb.position + (right * speed));
         }
 
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Instantiate(playerBulletPrefab, transform.position, transform.rotation);
+        }
 
     }
 }
