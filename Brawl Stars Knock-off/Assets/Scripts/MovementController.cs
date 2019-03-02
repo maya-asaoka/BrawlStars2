@@ -57,10 +57,13 @@ public class MovementController : MonoBehaviour
         }
 
 
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Instantiate(playerBulletPrefab, transform.position, transform.rotation);
-        }
+       
+        if (Input.GetButtonDown("Fire1")) {
+             GameObject projectile = Instantiate(playerBulletPrefab) as GameObject;
+             projectile.transform.position = transform.position + Camera.main.transform.forward *2;
+             Rigidbody rb = projectile.GetComponent<Rigidbody>();
+             rb.velocity= Camera.main.transform.forward * 40;
+             }
 
     }
 }

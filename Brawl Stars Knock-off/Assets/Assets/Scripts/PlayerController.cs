@@ -23,10 +23,17 @@ public class PlayerController : MonoBehaviour {
     // player can only move straight forward and backward, horizontal input adds torque
     private void FixedUpdate()
     {
-        if (CrossPlatformInputManager.GetButtonDown("Fire1"))
-        {
-            Instantiate(playerBulletPrefab, transform.position + raiseBullet, transform.rotation);
-        }
+        // if (CrossPlatformInputManager.GetButtonDown("Fire1"))
+        // {
+        //     Instantiate(playerBulletPrefab, transform.position + raiseBullet, transform.rotation);
+        // }
+
+        if (CrossPlatformInputManager.GetButtonDown("Fire1")) {
+             GameObject projectile = Instantiate(playerBulletPrefab) as GameObject;
+             projectile.transform.position = transform.position + Camera.main.transform.forward *2;
+             Rigidbody rb = projectile.GetComponent<Rigidbody>();
+             rb.velocity= Camera.main.transform.forward * 40;
+             }
 
         float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
         float vertical = CrossPlatformInputManager.GetAxis("Vertical");
