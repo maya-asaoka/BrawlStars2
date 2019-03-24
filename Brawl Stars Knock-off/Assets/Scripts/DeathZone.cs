@@ -17,6 +17,9 @@ public class DeathZone : MonoBehaviour
     }
 
     public void OnTriggerEnter(Collider other) {
-
+        if (other.tag == "Enemy") {
+            GameObject enemy = other.gameObject;
+            Destroy(enemy);
+        }
     }
 }
